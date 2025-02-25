@@ -1,0 +1,451 @@
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+</script>
+
+<template>
+  <header class="main-header">
+        <h1>My Rugby League</h1>
+        <nav class="navbar">
+            <ul>
+                <li><RouterLink to="/">Inicio</RouterLink></li>
+                <li><RouterLink to="/">Noticias</RouterLink></li>
+                <li><RouterLink to="/">Competicion</RouterLink></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+      <RouterView />
+    </main>
+
+    <footer>
+        <ul class="social">
+            <li class="li-social"><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter social-icon"></i></a></li>
+            <li class="li-social"><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram social-icon"></i></a></li>
+            <li class="li-social"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook social-icon"></i></a></li>
+            <li class="li-social"><a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin social-icon"></i></a></li>
+            <li class="li-social"><a href="https://github.com" target="_blank"><i class="fab fa-github social-icon"></i></a></li>
+        </ul>
+    </footer>
+</template>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+h2 {
+    text-align: center;
+}
+
+button {
+    width: 120px;
+    padding: 4px;
+    background-color: #eb6;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #3f3f3f;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.main-header {
+    width: 100%;
+    height: 125px;
+    background: linear-gradient(60deg, rgb(122 11 11) 0%, rgb(71 1 1) 100%);
+    border-bottom: 2px solid rgb(71 1 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    z-index: 30;
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        color: white;
+        margin-bottom: 20px;
+    }
+}
+
+.navbar {
+    width: 100%;
+
+    ul {
+        list-style-type: none;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+
+        li {
+            flex-grow: 1;
+
+            a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                text-shadow: 2px 1px black;
+                line-height: 2.5em;
+                font-size: 1.3em;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(71 1 1);
+                }
+            }
+
+        }
+    }
+}
+
+.titulo-liga {
+    font-size: 2.5em;
+    padding: 5px;
+    border-bottom: 2px solid rgb(71 1 1);
+}
+
+#title-competicion {
+    margin-bottom: 15px;
+}
+
+/* MAIN */
+main {
+    margin-top: 125px;
+    min-height: calc(100vh - 125px);
+}
+
+.img-portada {
+    width: 100%;
+    height: auto;
+    opacity: .8;
+}
+
+.portada {
+    width: 100%;
+    height: calc(100vh - 125px);
+    background: url("@/assets/img/foto-portada.jpg");
+    background-size: cover;
+    opacity: .9;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px black;
+    gap: 40px;
+
+    .portada-h2 {
+        font-size: 4em;
+    }
+
+    .portada-p {
+        font-size: 3em;
+    }
+
+    .portada-a {
+        text-decoration: none;
+        color: white;
+        font-size: 2em;
+        padding: 10px 20px;
+        border: 2px solid white;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/* pagina noticias */
+
+.bg-grey {
+    background-color: rgb(222 222 222 / 100%);
+}
+
+.mrg {
+    padding-bottom: 30px;
+    border-top: 2px solid #3f3f3f;
+}
+
+/* PAGINA NOTICIAS */
+
+.buscador-noticias {
+    width: 70%;
+    min-width: 400px;
+    max-width: 900px;
+    margin: 3px auto 0;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+
+    input {
+        flex-grow: 1;
+        margin-right: 15px;
+        border-radius: 5px;
+    }
+}
+
+.bg-dark {
+    background-color: #666;
+    position: fixed;
+    top: 125px;
+    width: 100%;
+    z-index: 30;
+    padding: 6px;
+}
+
+.margin-top {
+    width: 100%;
+    margin-top: 180px;
+}
+
+.detalle-noticia {
+    width: 70%;
+    min-width: 400px;
+    max-width: 900px;
+    background-color: white;
+    margin: 175px auto 0;
+    padding: 30px 25px 60px;
+
+    h2 {
+        margin-bottom: 20px;
+        font-size: 2.3em;
+    }
+
+    .img-detalle-noticia {
+        width: 100%;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    .texto-noticia {
+        text-align: justify;
+        margin-top: 15px;
+        font-size: 1.3em;
+    }
+}
+
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    background-color: #dedede;
+    padding: 0 20px 20px;
+}
+
+
+/* PAGINA COMPETICION */
+
+table {
+    width: 90%;
+    min-width: 400px;
+    max-width: 1200px;
+    margin: 15px auto;
+
+    thead {
+        border-bottom: 2px solid black;
+
+        th {
+            background-color: rgb(197 76 76);
+            color: rgb(252 247 234);
+            padding: 5px;
+            border-radius: 5px;;
+        }
+    }
+
+    & tbody tr:nth-child(odd) {
+        background-color: #f3f3f3;
+    }
+
+    td {
+        padding: 3px;
+        text-align: center;
+    }
+}
+
+.btn-table {
+    width: 35px;
+    padding: 2px;
+    background-color: lightgrey;
+    color: #3f3f3f;
+    border: 2px solid darkgrey;
+
+    & + .btn-table{
+        margin-left: 5px;
+    }
+}
+
+.filtro-competicion {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px;
+    background-color: #666;
+    color: white;
+
+    select {
+        width: 120px;
+        border-radius: 5px;
+    }
+}
+
+#jugadores-box, #box-calendario {
+    text-align: center;
+}
+
+.cp {
+    cursor: pointer;
+}
+
+.partido {
+    display: flex;
+    justify-content: center;
+
+    &>* {
+        padding: 0 20px;
+    }
+}
+
+#volver-equipos-btn {
+    margin-bottom: 30px;
+}
+
+.calendario-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+
+    .jornadas-select {
+        width: 120px;
+        padding: 3px;
+        border-radius: 5px;
+    }
+}
+
+.jugadores-title {
+    margin-top: 15px;
+}
+
+.th-cursor:hover {
+    cursor: pointer;
+    color: #eb6;
+}
+
+.th-selected {
+    border: 2px solid #eb6;
+    color: #eb6;
+}
+
+.resumen-partido {
+    width: 70%;
+    min-width: 400px;
+    margin: 20px auto 0;
+    padding: 20px;
+    border: 2px solid rgb(71 1 1);
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgb(51 51 51);
+    background-color: #f3f3f3;
+
+    .resumen-partido-title {
+        text-align: center;
+        font-size: 1.8em;
+    }
+
+    .resumen-acciones {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: 20px auto;
+
+        .accion-p-element {
+            padding: 4px;
+        }
+
+        .accion-p-final {
+            font-weight: bold;
+        }
+    }
+}
+
+.est-pagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    padding: 0 20px 20px;
+}
+
+.select-column-box {
+    width: 90%;
+    min-width: 400px;
+    max-width: 1200px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .select-column {
+        width: 140px;
+        padding: 3px;
+        border-radius: 5px;
+        margin: 10px auto;
+    }
+}
+
+
+/* FOOTER */
+footer {
+    width: 100%;
+    height: 125px;
+    background: linear-gradient(60deg, rgb(122 11 11) 0%, rgb(71 1 1) 100%);
+    border-bottom: 2px solid rgb(71 1 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+
+    .social {
+        list-style-type: none;
+        width: 60%;
+        min-width: 400px;
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+}
+
+.social-icon {
+    color: #f3f3f3;
+    font-size: 2.5em;
+}
+
+
+@media screen and (width <= 550px) {
+    .hidden {
+        display: none;
+    }
+
+    .select-column-box {
+        display: flex;
+    }
+}
+</style>
