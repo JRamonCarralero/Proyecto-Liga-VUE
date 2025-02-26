@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import {  watch } from 'vue';
 import { getAPIData } from '@/utils/utils';
 import { ref } from 'vue';
 
@@ -8,10 +8,14 @@ const props = defineProps(['mainLiga'])
 const API_PORT = location.port ? `:3333` : ''
 const clasificaciones = ref([])
 
-onMounted(async () => {
-    getClasificaciones()
+watch(props, () => {
+  getClasificaciones()
 })
 
+/**
+ * Loads clasificaciones for a given liga.
+ * If the mainLiga prop is not set, it will recursively call itself every 100ms until it is set.
+ */
 async function getClasificaciones() {
   setTimeout(async () => {
     if (props.mainLiga) clasificaciones.value = await getAPIData(`${location.protocol}//${location.hostname}${API_PORT}/api/read/clasificaciones/table/${props.mainLiga}`)

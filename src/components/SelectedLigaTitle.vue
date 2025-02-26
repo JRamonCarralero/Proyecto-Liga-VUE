@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, watch } from 'vue';
 import { getAPIData } from '@/utils/utils';
 import { ref } from 'vue';
 
@@ -8,10 +8,19 @@ const props = defineProps(['mainLiga'])
 const API_PORT = location.port ? `:3333` : ''
 const tituloLiga = ref('')
 
-onMounted(async () => {
+onMounted(() => {
   getTitle()
 })
 
+watch(props, () => {
+  getTitle()
+})
+
+/**
+ * Asynchronously loads the liga with the id given by the mainLiga prop and
+ * updates the tituloLiga reactive variable with the liga's name and year.
+ * If the mainLiga prop is not set, it calls itself after a 100ms delay.
+ */
 async function getTitle() {
   setTimeout(async () => {
     if (props.mainLiga) {

@@ -39,10 +39,8 @@ export function replyElementButtonClick(button) {
  * @returns {Promise<any>}
  */
 export async function getAPIData(apiURL, method = 'GET', data) {
-    //console.log('url', apiURL)
     let apiData
 
-    //console.log('getAPIData', method, data)
     try {
       let headers = new Headers()
 
@@ -51,7 +49,6 @@ export async function getAPIData(apiURL, method = 'GET', data) {
       if (data) {
         headers.append('Content-Length', String(JSON.stringify(data).length))
       }
-      //const userData = getUser()
       const userData = '123456'
       if (userData) {
         headers.append('Authorization', `Bearer ${userData}`)

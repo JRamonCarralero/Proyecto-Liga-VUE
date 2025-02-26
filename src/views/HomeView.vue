@@ -12,10 +12,7 @@
 
   onMounted(async () => {
     const appConfig = await getAPIData(`${location.protocol}//${location.hostname}${API_PORT}/api/read/appconfig`)
-    console.log('appConfig', appConfig)
     store.setMainLiga(appConfig[0].ligaId)
-
-    console.log('store Main', store.mainLiga)
   })
 
 </script>

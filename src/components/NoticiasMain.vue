@@ -1,18 +1,13 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { getAPIData } from '@/utils/utils';
-import { ref } from 'vue';
 
 const API_PORT = location.port ? `:3333` : ''
 const noticias = ref([])
-const siguiente = ref(false)
-const anterior = ref(false)
 
 onMounted(async () => {
     const respNoticias = await getAPIData(`${location.protocol}//${location.hostname}${API_PORT}/api/filter/noticias/search/1/3/_`)
     noticias.value = respNoticias.data
-    siguiente.value = respNoticias.siguiente
-    anterior.value = respNoticias.anterior
   })
 </script>
 
@@ -23,7 +18,7 @@ onMounted(async () => {
         <img src="@/assets/img/foto1-800x395.jpg" alt="{{ noticia.titulo }}" class="noticia-img" >
       </div>
       <div class="text-box">
-        <h3 class="noticia-title"><a href="@/noticias/{{ noticia._id }}" class="noticia-link">{{ noticia.titulo }}</a></h3>
+        <h3 class="noticia-title"><RouterLink :to="{ name: 'noticias', params: { id: noticia._id } }" class="noticia-link">{{ noticia.titulo }}</RouterLink></h3>
         <p class="noticia-text">{{ noticia.cabecera }}</p>
       </div>
     </div>

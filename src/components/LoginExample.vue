@@ -4,8 +4,12 @@ import { ref } from 'vue';
 const email = ref('')
 const pwd = ref('')
 
+/**
+ * Verifica si el email y password coinciden con los valores
+ * predeterminados y muestra un mensaje de alerta
+ * dependiendo de si se logue o no.
+ */
 const onLogin = () => {
-  console.log(email.value, pwd.value)
   if (email.value === 'admin@email.com' && pwd.value === '1234') {
     alert('logueado')
   } else {
