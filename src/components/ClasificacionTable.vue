@@ -1,5 +1,5 @@
 <script setup>
-import {  watch } from 'vue';
+import { onMounted, watch } from 'vue';
 import { getAPIData } from '@/utils/utils';
 import { ref } from 'vue';
 
@@ -8,6 +8,9 @@ const props = defineProps(['mainLiga'])
 const API_PORT = location.port ? `:3333` : ''
 const clasificaciones = ref([])
 
+onMounted(() => {
+  getClasificaciones()
+})
 watch(props, () => {
   getClasificaciones()
 })
