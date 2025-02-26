@@ -499,8 +499,7 @@ router.post('/login', async (req, res) => {
   // appconfig //
 
   router.get('/read/appconfig', async (req, res) => {
-      //res.json(await db.get({}, 'appconfig'))
-      res.json('OK')
+      res.json(await db.get({}, 'appconfig'))
   })
 
   router.put('/update/appconfig/:id', async (req, res) => {
