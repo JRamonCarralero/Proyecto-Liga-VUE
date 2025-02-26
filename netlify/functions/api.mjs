@@ -2,6 +2,7 @@ import { MongoClient, ObjectId } from "mongodb";
 import express, { Router } from 'express';
 import bodyParser from 'body-parser';
 import serverless from 'serverless-http';
+import process from "node:process";
 
 const URI = process.env.MONGO_ATLAS;
 const database = 'rugbyLeague'
@@ -180,10 +181,10 @@ router.get('/findbyid/estadisticas/:id', async (req, res) => {
 })
 
 router.get('/filter/estadisticas/estjugador/:ligaid/:equipoid/:jugadorid', async (req, res) => {
-    res.json(await db.get({ 
+    res.json(await db.get({
         ligaId: new ObjectId(req.params.ligaid),
         equipoId: new ObjectId(req.params.equipoid),
-        jugadorId: new ObjectId(req.params.jugadorid) 
+        jugadorId: new ObjectId(req.params.jugadorid)
     }, 'estadisticas'))
 })
 
@@ -494,13 +495,13 @@ router.post('/login', async (req, res) => {
       res.status(401).send('Unauthorized')
     }
   })
-  
-  // appconfig // 
-  
+
+  // appconfig //
+
   router.get('/read/appconfig', async (req, res) => {
       res.json(await db.get({}, 'appconfig'))
   })
-  
+
   router.put('/update/appconfig/:id', async (req, res) => {
       const ligaId = new ObjectId(String(req.body.ligaId))
       res.json(await db.update(req.params.id, { ligaId: ligaId }, 'appconfig'))
@@ -565,14 +566,14 @@ export function paginable(data, page, limit) {
  * @param {number} page - El número de la página actual.
  * @param {number} limit - El número máximo de elementos por página.
  *
- * @returns {Object} Un objeto que contiene la página actual de datos y 
- *                   indicadores booleanos para determinar si hay una 
+ * @returns {Object} Un objeto que contiene la página actual de datos y
+ *                   indicadores booleanos para determinar si hay una
  *                   página siguiente o anterior.
  */
 export function crearPaginacion(data, long, page, limit) {
     const respuesta = {
         siguiente: true,
-        anterior: false,        
+        anterior: false,
         data
     }
     if (long <= page * limit) respuesta.siguiente = false
@@ -870,7 +871,7 @@ async function getJornadaTable(jornadaId) {
           as: 'equipoVisitante'
         }
       }
-  )      
+  )
   pipeline.push(
       {
         $set: {
@@ -885,7 +886,7 @@ async function getJornadaTable(jornadaId) {
       }
     }
   )
-  pipeline.push({ $unset: ["jornadaId", "ligaId", "local", "visitante", "jugadoresLocal", "jugadoresVisitante", "eqLocal"] }) 
+  pipeline.push({ $unset: ["jornadaId", "ligaId", "local", "visitante", "jugadoresLocal", "jugadoresVisitante", "eqLocal"] })
 
 
   const aggregationResult = await partidosColl.aggregate(pipeline).toArray();
@@ -921,7 +922,7 @@ async function getPartidoWithEquipos(partidoId) {
           as: 'equipoVisitante'
         }
       }
-  )      
+  )
   pipeline.push(
       {
         $set: {
@@ -936,7 +937,7 @@ async function getPartidoWithEquipos(partidoId) {
       }
     }
   )
-  pipeline.push({ $unset: ["jornadaId", "ligaId", "jugadoresLocal", "jugadoresVisitante", "eqLocal"] }) 
+  pipeline.push({ $unset: ["jornadaId", "ligaId", "jugadoresLocal", "jugadoresVisitante", "eqLocal"] })
 
   const aggregationResult = await partidosColl.aggregate(pipeline).toArray();
   return aggregationResult
@@ -973,7 +974,7 @@ async function getEstadisticasTable(ligaId, sortBy, page) {
           as: 'jugador'
         }
       }
-  )      
+  )
   pipeline.push(
       {
         $set: {
@@ -987,8 +988,8 @@ async function getEstadisticasTable(ligaId, sortBy, page) {
         }
       }
   )
-  pipeline.push({ $unset: ["_id", "ligaId", "equipoId", "jugadorId", "jugItem"] }) 
-  
+  pipeline.push({ $unset: ["_id", "ligaId", "equipoId", "jugadorId", "jugItem"] })
+
   switch (sortBy) {
     case 'jugador':
       pipeline.push({ $sort: { jugApellidos: 1, jugNombre: 1 } })
@@ -1048,7 +1049,7 @@ async function getAccionesTable(match) {
           as: 'jugador'
         }
       }
-  )      
+  )
   pipeline.push(
       {
         $set: {
@@ -1062,8 +1063,8 @@ async function getAccionesTable(match) {
         }
       }
   )
-  pipeline.push({ $unset: ["partidoId", "jugItem", "equipo", "jugador"] }) 
-  
+  pipeline.push({ $unset: ["partidoId", "jugItem", "equipo", "jugador"] })
+
   pipeline.push({ $sort: { minuto: 1, _id: 1 } })
 
   const aggregationResult = await accionesColl.aggregate(pipeline).toArray();
