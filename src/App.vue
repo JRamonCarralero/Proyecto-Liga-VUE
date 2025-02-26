@@ -452,6 +452,10 @@ footer {
 }
 
 @media screen and (width <= 550px) {
+    .portada {
+      display: none;
+    }
+
     .hidden {
         display: none;
     }
