@@ -177,6 +177,7 @@ function getCalendario() {
  */
 async function uploadJornadas() {
   arrJornadas.value = await getAPIData(`${location.protocol}//${location.hostname}${API_PORT}/api/filter/jornadas/${ligaId.value}`)
+  selectedJornada.value = arrJornadas.value[0]
 }
 
 /**
