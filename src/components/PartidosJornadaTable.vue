@@ -34,21 +34,21 @@ async function getPartidos() {
   <table id="table-calendario">
     <thead>
       <tr>
-        <th>Fecha</th>
+        <th class="hidden">Fecha</th>
         <th>Equipo Local</th>
         <th>Resultado</th>
         <th>Equipo Visitante</th>
-        <th>Estadio</th>
+        <th class="hidden">Estadio</th>
         <th></th>
       </tr>
     </thead>
     <tbody id="tbody-calendario">
       <tr v-for="partido in partidos" :key="partido.id">
-        <td>{{ partido.fecha }}</td>
+        <td class="hidden">{{ partido.fecha }}</td>
         <td>{{ partido.equipoLocal }}</td>
         <td>{{ partido.puntosLocal }} - {{ partido.puntosVisitante }}</td>
         <td>{{ partido.equipoVisitante }}</td>
-        <td>{{ partido.estadio }}</td>
+        <td class="hidden">{{ partido.estadio }}</td>
         <td>
           <button class="btn-table" @click="emit('detallePartido', partido)">▶</button>
         </td>

@@ -439,6 +439,18 @@ footer {
 }
 
 
+@media screen and (width <= 880px) {
+    .filtro-competicion {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+
+        &>* {
+            margin: 0 auto;
+        }
+    }
+}
+
 @media screen and (width <= 550px) {
     .hidden {
         display: none;
@@ -446,6 +458,16 @@ footer {
 
     .select-column-box {
         display: flex;
+    }
+
+    .filtro-competicion {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+
+        &>* {
+            margin: 5px auto;
+        }
     }
 }
 </style>
