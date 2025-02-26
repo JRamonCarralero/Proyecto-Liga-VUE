@@ -16,6 +16,7 @@ coverage
 build
 _hidden
 .env
+out
 
 /cypress/videos/
 /cypress/screenshots/

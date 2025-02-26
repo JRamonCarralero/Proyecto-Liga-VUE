@@ -12,7 +12,8 @@
     "prepare": "cypress install",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "build:docs": "jsdoc ./src -r"
   },
   "dependencies": {
     "pinia": "^3.0.1",
@@ -38,6 +39,7 @@
     "vitest": "^3.0.5",
     "mongodb": "6.13",
     "cors": "^2.8.5",
+    "jsdoc": "^4.0.4",
     "@types/express": "^5.0.0"
   }
 }
