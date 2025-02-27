@@ -36,7 +36,7 @@ async function getAcciones() {
       function addAccion() {
         switch (accPartido[i].accion) {
             case 'E':
-                acciones.value.push(`Minuto ${accPartido[i].minuto}: ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} anota un ensayo para ${accPartido[i].eqNombre}`)
+                acciones.value.push(`⌚︎ ${accPartido[i].minuto}: ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} anota un ensayo 🏉 para ${accPartido[i].eqNombre}`)
                 if (props.partido.equipoLocal === accPartido[i].eqNombre) {
                     pLocal.value += 5
                 } else {
@@ -44,7 +44,7 @@ async function getAcciones() {
                 }
                 break
             case 'ET':
-                acciones.value.push(`Minuto ${accPartido[i].minuto}: ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} transforma el ensayo para ${accPartido[i].eqNombre}`)
+                acciones.value.push(`⌚︎ ${accPartido[i].minuto}: ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} transforma el ensayo ┟┧ para ${accPartido[i].eqNombre}`)
                 if (props.partido.equipoLocal === accPartido[i].eqNombre) {
                     pLocal.value += 2
                 } else {
@@ -52,7 +52,7 @@ async function getAcciones() {
                 }
                 break
             case 'EC':
-                acciones.value.push(`Minuto ${accPartido[i].minuto}: Concedido ensayo de castigo al jugador ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} para ${accPartido[i].eqNombre}`)
+                acciones.value.push(`⌚︎ ${accPartido[i].minuto}: Concedido ensayo de castigo 🏉 al jugador ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} para ${accPartido[i].eqNombre}`)
                 if (props.partido.equipoLocal === accPartido[i].eqNombre) {
                     pLocal.value += 7
                 } else {
@@ -60,7 +60,7 @@ async function getAcciones() {
                 }
                 break
             case 'GC':
-                acciones.value.push(`Minuto ${accPartido[i].minuto}: ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} anota un golpe de castigo para ${accPartido[i].eqNombre}`)
+                acciones.value.push(`⌚︎ ${accPartido[i].minuto}: ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} anota un golpe de castigo ┟┧ para ${accPartido[i].eqNombre}`)
                 if (props.partido.equipoLocal === accPartido[i].eqNombre) {
                     pLocal.value += 3
                 } else {
@@ -68,7 +68,7 @@ async function getAcciones() {
                 }
                 break
             case 'D':
-                acciones.value.push(`Minuto ${accPartido[i].minuto}: ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} anota un drop para ${accPartido[i].eqNombre}`)
+                acciones.value.push(`⌚︎ ${accPartido[i].minuto}: ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} anota un drop ┟┧ para ${accPartido[i].eqNombre}`)
                 if (props.partido.equipoLocal === accPartido[i].eqNombre) {
                     pLocal.value += 3
                 } else {
@@ -76,10 +76,10 @@ async function getAcciones() {
                 }
                 break
             case 'TA':
-                acciones.value.push(`Minuto ${accPartido[i].minuto}: El jugador ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} de ${accPartido[i].eqNombre} recibe una tarjeta amarilla`)
+                acciones.value.push(`⌚︎ ${accPartido[i].minuto}: El jugador ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} de ${accPartido[i].eqNombre} recibe una tarjeta amarilla 🟨`)
                 break
             case 'TR':
-                acciones.value.push(`Minuto ${accPartido[i].minuto}: El jugador ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} de ${accPartido[i].eqNombre} recibe una tarjeta roja`)
+                acciones.value.push(`⌚︎ ${accPartido[i].minuto}: El jugador ${accPartido[i].jugNombre} ${accPartido[i].jugApellidos} de ${accPartido[i].eqNombre} recibe una tarjeta roja 🟥`)
                 break
             default:
                 console.log('accion no reconocida', accPartido[i].accion)
@@ -98,7 +98,7 @@ async function getAcciones() {
 
 <template>
   <h3 class="resumen-partido-title">
-    <span id="eq-local">{{ props.partido.equipoLocal }}</span> <span id="p-local">{{ pLocal }}</span> - <span id="p-visitante">{{ pVisitante }}</span> <span id="eq-visitante">{{ props.partido.equipoVisitante }}</span>
+    <span id="eq-local">{{ props.partido.equipoLocal }}</span> <span><span id="p-local">{{ pLocal }}</span> - <span id="p-visitante">{{ pVisitante }}</span></span> <span id="eq-visitante">{{ props.partido.equipoVisitante }}</span>
   </h3>
   <div id="resumen-acciones" class="resumen-acciones">
     <p v-for="accion in acciones" :key="accion._id" :class="{ 'accion-p-element': true, 'accion-p-final': accion === 'Fin del partido' }">

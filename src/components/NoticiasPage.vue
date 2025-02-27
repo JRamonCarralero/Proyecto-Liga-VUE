@@ -123,15 +123,15 @@ defineExpose({
 
         .img-box {
             width: 100%;
-            height: 130px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
 
             .noticia-img {
-                width: 150px;
-                height: auto;
+                width: 210px;
+                height: 130px;
+                border-radius: 50%;
             }
 
             .noticia-title {
@@ -159,6 +159,29 @@ defineExpose({
     &:hover {
         cursor: pointer;
         color: rgb(122 11 11);
+    }
+}
+
+@media screen and (width <= 550px) {
+    .noticias-box-list {
+        .box-noticia-list {
+            width: 350px;
+            height: auto;
+        }
+
+        .img-box {
+            flex-direction: column;
+
+            .noticia-img {
+                margin: 10px auto;
+                height: 130px;
+            }
+
+            .noticia-title {
+                width: 100%;
+                font-size: 21px;
+            }
+        }
     }
 }
 </style>

@@ -473,5 +473,12 @@ footer {
             margin: 5px auto;
         }
     }
+
+    .resumen-partido-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 }
 </style>
