@@ -44,6 +44,9 @@ En este repositorio se aplican los conocimientos adquiridos durante el curso:
 * ESLint
 * Lint-Staged
 * StyleLint
+* Vue
+* Vue-router
+* Pinia
 * Netlify (sólo si se va a desplegar en netlify)
 
 ## Plugings de VS Code recomendados
