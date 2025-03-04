@@ -184,12 +184,6 @@ Partido = {
     jugado
 }
 
-## Relacion entre componentes
-
-Para las diversas páginas, tenemos un archivos bundle que importa los componentes utilizados en esa página. Están identificados como bundleNombrePagina.js y en ellos consta la importación del componente y su exportación para ser utilizado en el HTML.
-
-Las carpetas acabadas en Lit, son los componentes creados con [Lit Element](https://lit.dev)
-
 ## pre-commit
 
 Integramos [lint-staged] para ejecutar las validaciones antes de  ejecutar el commit.
